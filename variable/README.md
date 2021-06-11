@@ -192,9 +192,63 @@ echo `expr index "$string" io` # 输出 6
 
 ## Shell 数组
 
-
-
 bash支持一维数组（不支持多维），没有限定数组大小。
+
+### 定义数组
+
+```shell
+array_name=(value0 value1 value2 value3)
+```
+
+或者
+
+```shell
+array_name=(
+value0
+value1
+value2
+value3
+)
+```
+
+还可以单独定义数组的各个分量
+
+```shell
+array_name[0]=value0
+array_name[1]=value1
+array_name[n]=valuen # 可以不用连续的下标，下标范围没有限制
+```
+
+### 读取数组
+
+```shell
+valuen=${array_name[n]}
+```
+
+使用`@`符号可以获取数组中的所有元素：
+
+```shell
+echo ${array_name[@]}
+```
+
+### 获取数组的长度
+
+与获取字符串长度的方法相同
+
+```shell
+# 取得数组元素的个数
+length=${#array_name[@]}
+# 或者
+length=${#array_name[*]}
+# 取得数组单个元素的长度
+lengthn=${#array_name[n]}
+```
+
+## Shell 注释
+
+
+### 多行注释
+
 
 
 
