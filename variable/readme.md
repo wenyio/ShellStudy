@@ -103,4 +103,101 @@ echo ${myUrl}
 
 以上执行没有任何输出
 
+## 变量类型
+
+运行shell时，会同时存在三种变量：
+
+- 局部变量
+- 环境变量
+- shell 变量：有一部分是环境变量，有一部分是局部变量
+
+
+## Shell 字符串
+
+### 单引号
+
+```shell
+str='this is a string'
+```
+
+单引号字符串的限制：
+
+- 单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的
+- 单引号字串中不能出现单独一个单引号（使用转义符也不行），可以成对出现，作为字符串拼接使用
+
+
+### 双引号
+
+```shell
+your_name="weny"
+str="Hello, I know you are \"$your_name\"! \n"
+echo -e $str
+```
+
+输出结果为：
+
+```
+Hello, I know you are "weny"! 
+```
+
+
+双引号的优点：
+
+- 双引号里可以有变量
+- 双引号里可以出现转义字符
+
+### 拼接字符串
+
+```shell
+your_name="weny"
+# 使用双引号拼接
+greeting="hello "$your_name" !"
+greeting_1="hello, ${your_name} !"
+echo $greeting $greeting_1
+# 使用单引号拼接
+greeting_2='hello, '$your_name' !'
+greeting_3='hello, ${your_name} !'
+echo $greeting_2 $greeting_3
+```
+
+输出结果为：
+
+```shell
+hello weny ! hello, weny !
+hello, weny ! hello, ${your_name} !
+```
+
+### 获取字符串长度
+
+```shell
+string="abcd"
+echo ${#string} # 输出4
+```
+
+### 提取子字符串
+
+```shell
+string="wenyi is a great site"
+echo ${string:1:4} # 输出 enyi
+```
+
+### 查找子字符串
+
+查找字符串i或o的位置（哪个字母先出现就计算哪个）：
+
+```shell
+string="weny is a great site"
+echo `expr index "$string" io` # 输出 6
+```
+
+## Shell 数组
+
+
+
+bash支持一维数组（不支持多维），没有限定数组大小。
+
+
+
+
+
 
